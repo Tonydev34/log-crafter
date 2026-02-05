@@ -1,0 +1,126 @@
+Build aweb-based Changelog Generatorforindie SaaS founders, startups, and small dev teamsthat helps them generate clean, professional changelogs and release notes in under 30 seconds.
+
+🎯 Product Positioning
+Target audience:
+Indie hackers
+Startup founders
+Small SaaS teams
+Non-technical founders
+Value proposition:
+“Generate clean, readable changelogs and release notes in seconds — no Git knowledge required.”
+Core differentiator:
+Simple UI
+Web-based (not CLI)
+Human-readable output
+SaaS-friendly templates
+
+🔑 Core Features (MVP)
+1️⃣ Manual Changelog Generator
+Text input for:
+Features
+Bug fixes
+Improvements
+Optional version number & release date
+Template-based formatting
+2️⃣ Output Formats
+Markdown
+Plain text
+HTML
+“Keep a Changelog” standard format
+3️⃣ Templates
+Feature release
+Bug fix release
+Hotfix / patch release
+SaaS product update
+Mobile app update
+4️⃣ UX Requirements
+Clean, minimal UI
+Copy-to-clipboard button
+One-click regenerate
+No login required for free tier
+
+🔌 Integrations (Paid / Advanced)
+GitHub Integration
+Connect via OAuth
+Select repository
+Fetch commit messages between tags
+Group commits into:
+Features
+Fixes
+Breaking changes
+Auto-generate changelog
+GitLab Integration (Optional)
+Same logic as GitHub
+
+🧠 AI Logic (Core Intelligence)
+Clean up raw commit messages
+Convert technical messages into human-readable text
+Remove duplicates
+Group similar changes
+Enforce consistent tone
+Avoid jargon unless requested
+Example transformation:
+fix: auth redirect loop→ Fixed an issue causing users toget stuck during login
+
+
+🧩 Technical Stack (Suggested)
+Frontend:
+Next.js or React
+Tailwind CSS
+Backend:
+Node.js (API routes)
+Auth:
+OAuth (GitHub)
+AI:
+OpenAI API (text generation & cleanup)
+Database (optional):
+PostgreSQL / SQLite
+Deployment:
+Vercel / Netlify
+
+💰 Monetization Model
+Free Tier
+Manual input only
+Limited templates
+Limited exports
+Paid Tier ($5–15/month)
+GitHub/GitLab integrations
+Automatic changelog generation
+Version history
+Multiple exports
+Team access
+
+🔍 SEO & Growth Requirements
+Primary Keywords
+changelog generator
+release notes generator
+generate changelog
+automatic changelog
+Long-Tail Keywords
+simple changelog generator
+changelog generator online
+release notes generator for SaaS
+github changelog generator
+SEO Pages to Build
+/— Changelog Generator
+/github-changelog-generator
+/release-notes-generator
+/how-to-write-a-changelog
+
+📄 Output Requirements
+Deliver:
+Full frontend UI
+Backend API endpoints
+GitHub OAuth integration
+AI prompt logic for changelog cleanup
+Clear instructions for setup & deployment
+
+🧪 Quality Expectations
+Production-ready code
+Modular architecture
+Clear comments
+Error handling
+Rate limiting on AI calls
+
+🏁 Final Instruction
+Build this tool as afast, lightweight, SEO-friendly micro-SaaSthat can be launched in under7 daysand scaled later.
