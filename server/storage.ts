@@ -1,38 +1,43 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { changelogs, type Changelog, type InsertChangelog } from "@shared/schema";
+import { db } from "./db";
+import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  // Changelogs
+  createChangelog(changelog: InsertChangelog): Promise<Changelog>;
+  getChangelog(id: number): Promise<Changelog | undefined>;
+  listChangelogs(userId: string): Promise<Changelog[]>;
+  deleteChangelog(id: number): Promise<void>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async createChangelog(changelog: InsertChangelog): Promise<Changelog> {
+    const [created] = await db
+      .insert(changelogs)
+      .values(changelog)
+      .returning();
+    return created;
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getChangelog(id: number): Promise<Changelog | undefined> {
+    const [changelog] = await db
+      .select()
+      .from(changelogs)
+      .where(eq(changelogs.id, id));
+    return changelog;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async listChangelogs(userId: string): Promise<Changelog[]> {
+    return db
+      .select()
+      .from(changelogs)
+      .where(eq(changelogs.userId, userId))
+      .orderBy(desc(changelogs.createdAt));
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async deleteChangelog(id: number): Promise<void> {
+    await db.delete(changelogs).where(eq(changelogs.id, id));
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
